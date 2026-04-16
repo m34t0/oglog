@@ -32,10 +32,10 @@ function __oglog_print_divider() {
 }
 
 function __oglog_show_main_menu() {
-    echo $'\_/_/_/_/ Choose an option and hit enter: \_/_/_/_/';
+    echo $'\_/_/_/_/ Choose an option and hit enter: \_\_\_\_/';
     __oglog_print_divider;
     echo $'1. Add new git log alias';
-    echo $'2. Take a hug!';
+    echo $'2. Hip-hop';
     echo $'3. Update';
     echo $'q. Exit';
     echo $'\nTell me what you want, what you realy realy want?\n';
@@ -43,21 +43,65 @@ function __oglog_show_main_menu() {
 
 function __oglog_handle_main_menu_choice() {
     local ALIAS_ADDING=1;
-    local HUG=2;
+    local HIP_HOP=2;
     local UPDATE=3;
     local EXIT="q";
 
     case $1 in
     $ALIAS_ADDING)
-	echo "Now you can choose what you wanna see in your git log.";
+	echo "Now you can choose what you want to see in your git log.";
 	echo "You will be prompted to construct a pieces of log.";
-	echo "Once a piece done, you save it and then you can constract next piece.";
-	echo "Once you satisfied with all pieces, you save you log by adding an alias for it";
+	echo "If a piece is done, you will be able to save it and then construct next piece.";
+	echo "Once you satisfied with all pieces, you will be able to save your log by adding an alias for it";
 	echo "Dont't worry, oglog tries not to pollute users home directory, and will store aliases in separate folder!";
         __oglog_build_git_log_alias;
         ;;
-    $HUG)
-        echo $'\nI HUG YOU <3!\n';
+    $HIP_HOP)
+        echo $'\n
+                                                                                    ;
+       :::::......::................                                                xx:   .;.
+       ....:......................                                             ;&$  :xx:;;;;
+       ...........................                                               $x .xx;...:.
+       ..:::................. ..... ...                                          .x; xxxx.:;.
+       :::............. .  ....... .          .       x&&&.                    :x..;;x;xx;:x:
+      :xxxxxxxxxxx;;::;::...            ..           .x::xx&&               .:....:.:xxxxx:;.
+      :xxx;::::::::::::::.::::;;::::...... ...      :&$;    .$.           ::..:::::;;:xxxxx;.
+      .;;xxxx;...::::.:.................           :$x .x;.:xx$        ::::.:::::;;;;x;xxxx;.
+      .xxx;xxxxx: .........               ;x  .. . $x.xxx;  ;;.:;;::;;::...::::x;;;xxx;xxxx..
+      ;xxxxxxxxxx$$x:;;;;;;;xxxxxxx;xxxx;:;.;::....x.   .xxx;. ..::. ....::;:;:;;;xx;x;xxxx;
+      :xxxxxxxxxxxxx;;;;;;;::::...:.::::. ..:....  :::... :..:.:...::..::;:;:x;xx;;x;x;xxxx;
+      .xxxxxxxxxxxx;;;x;;:::;:::::::::::::... ..:;;x;;;:x:$$..::..;;::.:;;:;;xx;xxx;x;xxxxx;
+      .xxxxxx;;;xxxx:;;.:;;:::;;:::::::::::::.;:::.:::xx;..:.;xx:.::::;;;;xxx;x;xx;xx;xxx;;:
+      :xxxxxxxxxxxx;::.;;.....::.:.:::::...::;::;;;xx .;;xx$$: ;:;;;;;x;xx;xxx;;xxxxxxxxxxx:
+      :xxxxxxxxxxxxx;;;;::::::;;:;.:;..:...;;x;;;x;x&  ::xxxx. $x;xxx;xxxxxxxxxxxx:.:xxxx;;;
+      .xxxxxxx;xxxx;::::::::;;:.....:xxx:;x:;:x;;xx&  .xxx;::.  $&$&$xxxxx$xx&x  :;x;;xxxx;:
+      .;;;;;;;;xxxx;::::::..::::::::;x;x:;x;xx$$$;   :;....::...     .x$$x;   .;;xxxxxxxxxx;
+      .;;;;;xx;xxxx;::::xx:.:::.:...;;;x:;xx&$x    .;.. .......  :        .;:::;;xxxxxxxxx::
+      .;;;;;xxxxxxx;:;;;;:;xx;:::;:;x;xx$xx:    ;&  .. x:  ..   ;. .:    ;xxxxxxx;xxx;xx....
+      .;;;x;;;;xx;x;:;;;;;;;:;;::;x;xxx.    :;.:  .    . ;$   :.  ...    :xxxx$$xxxxxx::.:::
+      .;;;;;;:;;;;x.....::::;;;.:;;;;;  ... ..    :.:     . .x :;xx.;:. .xxxx$$$x;..:..:::::
+      .;x;;;xxxxx;x:;;::;;;;:::;;xxxx  ....:..  x..:x::.&.$&&&x;::$;x$;.;xx$;xx..:::::;;::;:
+      .;;;;;;;;xx;x:..::x;;;xxxx;;;x  .....:;:.:... ..;.xx&x;;x$x&x;x&;.xx$$x;:x;;;::::::::;
+      :&$$$xx$$xxxx;:xxxx$&&&&&&$x;x :xxx: x;;;;;x;:xxxxxx;;:xx;;;:;x$x;x$xx;;;x;;;;;;::::::
+                ..x..              &xxxx$;x&x$&$xxxx&xx.:;;;;;xx$&$$&$&x$;;;;;;:;;x;;:;;.::;
+               .  $x         ...;&$.:;;xx$&&&xxx:.....xx;........:;xxxxx:x;;xxx;;;;xx;;;;;::
+      x&&&&&&&&$  xx   ;$xxx$;:x$;.:;xxx$  &&x::.:;:....:;;;:.:;xxxxxxxx;xx;xx;;;;;;;;;;;;;;.
+       ::;;;;xxx  xx   ;x;::::x:::xxxxxx;  &&;;.:...::;:.::::;;xxxxx$x;;xx;;;;;;;;;;;x;;;;;;.
+       ::.::;:xx  $x   ;::....;;;xxx$x.;;  :&x........:......:;;xxxxxx;;xx;;;;;;;;;;;x;;;;;;.
+       ....:::xx  xx   ;.....;xxxx$x...::  .$;::....:........::;xxxxxx;xxx;;;;;;;;;;;;x;;;;;.
+       .:....:;;  $x   ;...:;;;;xx ......   xx;;x;;.x.x::;xxxxx.x;xxx;;x;x;;xxxx;;;;x;x;;;;;.
+       .......:;  $x   x.xx:;;xxx  ......   ;$.xx.$;:xxx;..;xxx;x;xxx;xxxx;;;;;;;;;;;;;;;;;;.
+       .......::  x$   ;x:.::;xx: ......:   xx;;;;;.;xx;x.:x;:xxxxxxx;x;;x;;x;;;;;;;;;;x;;;;.
+       .......:; .x&   &:.;xxxx: ........   $x;xx$x;$&x$$$&$xxx:;;x;;;xxxxx;xxxx;;;;;;;;;;x;.
+       .......:; .$x  &:;;xxxx  .......... .x..xx::.:.     .;xx;:...:;x;;;;;xxxx;;;;;;x;x;x;.
+       .......;. .x:  x.;;xx: ...........   &$xx;.. ..;;:.:;xxx;xxxxxxxxxxx;;;;;;;;;;;;;;;;;.
+       .......;. .;:  ;;x$;..............  :$    ;xx$x..x&:.     ;&&&&x;xx;x;;;;;;;;x;;;;;;;.
+       .......;. .x:.:;;x..::...........;   x&&x&x;;x$$xx&&&x&;x$     $;x;;x;;;;;;;;;;;;;;;;.
+       .......;. .x::::;:................ .x;:;x:;:;;$xx&.;xx;$x&&&&:.x;xxxx;xx;;;;;x;;;;;;;.
+       ......:;. .; ..:..:.:..::.::::...:xxx;xxxxx;;$x:xxxxxx;:x..;$$&x;;;;x;xx;;;;;;;x;x;;;.
+                       .               ;;.....xx;:::..:: .$.:.:::: :....::..................
+
+                                                                                                   \n';
         ;;
     $UPDATE)
         eval "$(curl -s "https://raw.githubusercontent.com/slavaryk/oglog/master/update.sh")" && oglog_update;
@@ -95,17 +139,17 @@ function __oglog_build_git_log_alias() {
 }
 
 function __oglog_show_pieces_menu() {
-    local WHITE="\033[01;37m";
+    local GREEN="\033[0;32m";
     local RESTORE="\033[0m";
 
     echo $'\nWhat you want to see in your git log?';
     __oglog_print_divider;
-    echo -e "$WHITE Commits: $RESTORE";
+    echo -e "$GREEN Commits: $RESTORE";
     echo $'1. Commit hash';
     echo $'2. Tree hash';
     echo $'3. Parent hashes\n';
 
-    echo -e "$WHITE Author/Commiter info: $RESTORE";
+    echo -e "$GREEN Author/Commiter info: $RESTORE";
     echo $'4. Author name';
     echo $'5. Author email';
     echo $'6. Author date';
@@ -115,13 +159,13 @@ function __oglog_show_pieces_menu() {
     echo $'10. Commiter date';
     echo $'11. Relative commiter date\n';
 
-    echo -e "$WHITE Commit information from author: $RESTORE";
+    echo -e "$GREEN Commit information from author: $RESTORE";
     echo $'12. Message';
     echo $'13. Body (description)';
     echo $'14. Body and message';
     echo $'15. Notes\n';
 
-    echo -e "$WHITE Refs: $RESTORE";
+    echo -e "$GREEN Refs: $RESTORE";
     echo $'16. Ref names (tags, branches) like --decorate option';
     echo $'17. Ref names, but without "(", ")"';
     echo $'\ns/S -> Save';
@@ -165,7 +209,7 @@ function __oglog_handle_piece_choice() {
     ;;
     "s" | "S") echo $'Okay!';
     ;;
-    *) echo $'\nMaybe try again?\n';
+    *) echo $'\nTry again?\n';
     ;;
     esac
 }
@@ -227,7 +271,7 @@ function __oglog_add_color_to_piece() {
 
 function __oglog_show_dividers_menu() {
     echo $'\nWhat divider?\n';
-    echo $'You can write your variant!\n Just type it and hit enter (even with empty string).';
+    echo $'You can write your own!\n Just type it and hit enter (even with empty string).';
     echo "1. --";
     echo "2. ->";
     echo "3. _";
@@ -261,10 +305,10 @@ function __oglog_add_divider_to_piece() {
 }
 
 function __oglog_show_options_menu() {
-    local WHITE="\033[01;37m";
+    local GREEN="\033[0;32m";
     local RESTORE="\033[0m";
 
-    echo -e "$WHITE Other options: $RESTORE";
+    echo -e "$GREEN Other options: $RESTORE";
     echo $'1. No merge commits';
     echo $'2. Only merge commits';
     echo $'3. First-Parent view (gives a better way to look at evolution of topic branches)';
