@@ -32,7 +32,11 @@ function __oglog_print_divider() {
 }
 
 function __oglog_show_main_menu() {
-    echo $'\_/_/_/_/ Choose an option and hit enter: \_\_\_\_/';
+    local GREEN="\033[0;32m";
+    local RESTORE="\033[0m";
+
+    echo -e "$GREEN Choose an option and hit enter: $RESTORE";
+    echo $'Choose an option and hit enter:';
     __oglog_print_divider;
     echo $'1. Add new git log alias';
     echo $'2. Hip-hop';

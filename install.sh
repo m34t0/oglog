@@ -1,30 +1,31 @@
 #! bin/bash
 
 function oglog_install() {
-    local main_script_url="https://raw.githubusercontent.com/slavaryk/oglog/master/oglog.sh";
-    local aliases_url="https://raw.githubusercontent.com/slavaryk/oglog/master/assets/aliases.sh";
-    local config_url="https://raw.githubusercontent.com/slavaryk/oglog/master/assets/config.sh";
+    local main_script_url="https://raw.githubusercontent.com/m34t0/oglog/refs/heads/master/oglog.sh";
+    local aliases_url="https://raw.githubusercontent.com/m34t0/oglog/refs/heads/master/assets/aliases.sh";
+    local config_url="https://raw.githubusercontent.com/m34t0/oglog/refs/heads/master/assets/config.sh";
     local script_dir="";
     # https://unix.stackexchange.com/a/120138
     local current_cl=$(ps -p$$ -o cmd="",comm="",fname="" 2>/dev/null | sed 's/^-//' | grep -oE '\w+' | head -n1);
     local config_location="";
 
     function __oglog_add_folder() {
-        echo $'Creating script specific folder';
+        echo $'Creating script specific folder...';
         echo "$script_dir";
         echo $'\n';
         mkdir "$script_dir";
     }
 
     function __oglog_add_script() {
+	# I would beat someone up for that...
         echo "" >> "$config_location";
-        echo "# oglog script executing and variables" >> "$config_location";
+        echo "# oglog script and variables" >> "$config_location";
         echo "for f in $script_dir/*; do source "'$f'"; done" >> "$config_location";
         echo "" >> "$config_location";
     }
 
     function __oglog_backup_config_file() {
-        echo "Your shell config file will be backuped in same directory as $config_location!";
+        echo "Your shell config file will be copied to the backup in the same directory as $config_location!";
         cp "$config_location" "${config_location}_backup$(date +%Y-%m-%d)";
     }
 
@@ -36,21 +37,21 @@ function oglog_install() {
             if [[ "$config_location" != "" ]]
             then
                 echo $'Checking lines in .zshrc\n';
-                grep -qF "for f in $script_dir/*; do source "'$f'"; done" "$config_location";
                 if grep -qF "for f in $script_dir/*; do source "'$f'"; done" "$config_location";
                 then
                     echo $'Execution scripts already exists\n';
                 else
-                    echo $'Add some oglog lines to .zshrc...\n';
+                    echo $'Adding oglog lines to .zshrc...\n';
                     __oglog_backup_config_file;
                     __oglog_add_script;
                 fi
             else
+		# OMG
                 echo $'.zshrc not found, lets create it in your HOME!\n';
                 touch "$HOME/.zshrc";
                 config_location="$HOME/.zshrc";
 
-                echo $'Add some oglog lines to $HOME/.zshrc...\n';
+                echo $'Adding oglog lines to $HOME/.zshrc...\n';
                 __oglog_add_script;
             fi
             ;;
@@ -64,16 +65,17 @@ function oglog_install() {
                 then
                     echo $'Execution scripts already exists\n';
                 else
-                    echo $'Add some oglog lines to .bashrc...\n';
+                    echo $'Adding oglog lines to .bashrc...\n';
                     # __oglog_backup_config_file;
                     __oglog_add_script;
                 fi
             else
+		# T_T
                 echo $'.bashrc not found, lets create it in your HOME!\n';
                 touch "$HOME/.bashrc";
                 config_location="$HOME/.bashrc";
 
-                echo $'Add some oglog lines to $HOME/.bashrc...\n';
+                echo $'Adding  oglog lines to $HOME/.bashrc...\n';
                 __oglog_add_script;
             fi
             ;;
@@ -81,7 +83,7 @@ function oglog_install() {
     }
 
     function __oglog_download() {
-        echo $'Downloading main oglog scripts from https://raw.githubusercontent.com/slavaryk/oglog/master/...\n';
+        echo $'Downloading main oglog scripts from https://raw.githubusercontent.com/m34t0/oglog/refs/heads/master/...\n';
         curl -s $main_script_url > "$script_dir/oglog.sh";
         curl -s $aliases_url > "$script_dir/aliases.sh";
         curl -s $config_url > "$script_dir/config.sh";
@@ -109,7 +111,7 @@ function oglog_install() {
         if [[ ! -z "$XDG_CONFIG_HOME" ]]
         then
             echo $'\nFound your XDG_CONFIG_HOME. Great job!\n';
-            echo $'Check your XDG_CONFIG_HOME directory for necessary oglog folder...\n';
+            echo $'Checking your XDG_CONFIG_HOME directory for necessary oglog folder...\n';
 
             if [[ -d "$XDG_CONFIG_HOME/.oglog" ]]
             then
@@ -125,7 +127,7 @@ function oglog_install() {
             if [[ -d "$HOME/.config" ]]
             then
                 echo $'Found it!\n';
-                echo $'Check your HOME/.config directory for necessary oglog folder...\n';
+                echo $'Checking your HOME/.config directory for necessary oglog folder...\n';
 
                 if [[ -d "$HOME/.config/.oglog" ]]
                 then
@@ -136,7 +138,7 @@ function oglog_install() {
                     __oglog_add_folder;
                 fi
             else
-                echo $'Check your HOME directory for necessary oglog folder...\n';
+                echo $'Checking your HOME directory for necessary oglog folder...\n';
 
                 if [[ -d "$HOME/.oglog" ]]
                 then

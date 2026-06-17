@@ -8,7 +8,7 @@ function oglog_update() {
     if [[ $OGLOG_FOLDER != "" ]]
     then
         rm -rf "$OGLOG_FOLDER/oglog.sh";
-        curl "https://raw.githubusercontent.com/slavaryk/oglog/master/oglog.sh" > "$OGLOG_FOLDER/oglog.sh";
+        curl "https://raw.githubusercontent.com/m34t0/oglog/refs/heads/master/oglog.sh" > "$OGLOG_FOLDER/oglog.sh";
         for f in $OGLOG_FOLDER/*; do source "$f"; done
     else
         echo -e "$RED ERROR$RESTORE: OGLOG_FOLDER not found. You may need to reinstall oglog manually.";
